@@ -1,6 +1,66 @@
 # The Firmware Handbook by Jack Ganssle
 
-## Chapter 4: Tools and Methods for Improving Code Quality
+## Chapter 11: Introduction to Machine Calculations
+## Chapter 12: Floating Point Aproximations
+## Chapter 13: Math Functions
+
+## Chapter 15: Real-Time Kernels
+
+- **What is a Real-Time Kernel**: It's a software that manages the time of your uC to ensure events are processed as efficiently as possible.
+- **What is a Task**: Simple program (loop) with his own task space and his priority (how important is the task).
+
+### Clock Tick
+The kernal has a time source caller "clock tick", generally comes from a hardware timer. It's quite common to use the power line frequency as the tick source. When the tick occurs, the kernel is notified and determines if any of the tasks waiting for time to expire need to be made ready-to-run.
+
+### Scheduling
+It's how the kernel determines whether a more important task needs to run.
+The kernel scheduling occurs under:
+1. ISR (Interrupt Service Routine)
+2. Task Message
+3. Task Delay
+   
+The kernel will only run task that are Ready-To-Run and by the order of the priority. So it's important to think how you want to run your task in every scenario.
+
+### Context Switching
+The context of a task consists of all the cpu registers. To suspend execution of a task, the kernel needs to save these registers. Similarly, to resume execution of a task, the kernel needs to restore from a saved context.
+
+### Kernel Services
+Summary of what you learned:
+- A Kernel allows you to split your application into multiple tasks
+- A Kernel requires a time source (clock tick) to allow for takss to suspend them-selves for a certain time or to provide timeouts when receiving messages.
+- A task or an ISR can send message to other tasks.
+- A preemptive kernel always tries to run the most important task that is Ready-To-Run. Controlled by the scheduler.
+- A context switch is used to save the current state of a task and resume a more important task.
+
+#### Semaphores
+It's a mechanism to ensure exclusive access to common resources (shared variable, array, data structure, I/O device, etc).
+There are three types of semaphores:
+1. **Binary**: is used to access a single resource (E.G: display)
+2. **Counting**: is used to access any one of multiple identical resources. (E.G: buffer from a poll of identical buffers)
+3. **Mutexes**: or Mutual Exclusion Semaphore, special type of binary that is also used to access a single resource.The difference from a regular binary is that the mutex has 'intelligence' built into it, it's used to reduce priority inversions which are inherent to the other semaphores.
+
+**Priority Inversion** is a problem in real-time systems when using semaphores in addition to multiple tasks with different priority. The mutex has a scheme called priority inheritance, This allows to the OS to modify the priority of the task that has the mutex, so the system can ensure that the mutex is released if a high priority task wants to used it.
+
+#### Message Queues
+It's allows a task or an ISR to send messages to another task. Generally implemented as FIFO circular buffers, the number of messages is configurable.
+
+#### Memory Management
+Using malloc() and free() functions is dangerous in real-time systems, you may not be able to obtain a single contiguous memory area due to fragmentation and it's also generally non deterministic because of the algorithms used.
+Most kernels provide an alternative to malloc() and free().
+
+### Do you need a Kernel?
+A kernel allows your product to be more responsive to real-time events. Also, the responsiveness of high priority tasks is virtually unaffected by low priority tasks. As applications and products become more and more complex, a kernel allows you to better manage the tasks that need to be performed by your products.
+It's dependent on the product and the CPU. For 16bit and 32bit processors is highly recommended to use a kernel.
+
+### Can you Use a Kernel?
+To ask this question you had to consider:
+- **CPU**: The kernel will consume 2-5 % of the processing power. Your processor needs to allow saving and chaning of the stach pointer at run time.
+- **ROM**: The kernel requires a specific code space, depending on the kernel you may need between 4kbytes and 200kbytes.
+- **RAM**: The kernel requires ram to maintain TCBs, semaphores, message queues and a few other variables. Also the tasks stach space. Depending on the kernel you may need between 100 bytes to a few kbytes.
+- **COST**: The kernel could have a license or a cost per unit selled.
+
+### Selecting a Kernel?
+There are currently close to 150 different commercial kernels to choose from. You can rate by Popularity, Reputation, Source Code, Portability, Scalability, Preemtive, #Tasks, Stack sizes, Services, Performance, Certification, Tools and Components.
 
 
 ## Chapter 18: Understanding Your C Compiler (How to Minimize Code Size)
@@ -146,7 +206,7 @@ void main() {
     printf("Result: %d\n", result);
 }
 ```
-
+## Implementing Downloadable Firmware with Flash Memory
 
 
 
