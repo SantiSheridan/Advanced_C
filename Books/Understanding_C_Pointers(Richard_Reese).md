@@ -90,6 +90,18 @@ void (*fptr0)();   //Passed void and returns void
 int (*fptr1)(double); // Passed a double and returns an int
 void (*fptr2)(char*); // Passed a pointer to char and returns void
 double* (*fptr3)(int, int); // Passed two integers and returns a pointer to a double
+
+int (*fptr4)(int);
+int squate(int num){
+  return num*num;
+}
+
+int main(){
+int n = 5;
+fptr5 = square;
+printf("%d squared is %d\n",n, fptr1(n));
+/* fptr1 = &square; == fptr1 = square; */
+}
 ```
 
 While using the function pointers, we can:
@@ -99,5 +111,7 @@ While using the function pointers, we can:
 - Compare Function Pointers
 - Cast Function Pointer (Careful with the parameters type)
 
+
 ## Chapter 4: Pointers and Arrays
-  
+
+
