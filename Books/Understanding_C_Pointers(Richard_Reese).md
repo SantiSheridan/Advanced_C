@@ -113,5 +113,62 @@ While using the function pointers, we can:
 
 
 ## Chapter 4: Pointers and Arrays
+Is a contiguous collection of homogeneous elements that can be accessed using an index.
+The elements are adjacent to one another in memory with no gaps and they are all of the same type.
 
+The array has no information about the number of elements it contains. The array name simply references a block of memory.
+A two-dimensional arrays is treated as an array of arrays, when we access the arrayusing onle one subscript, we get the pointer to the correspondng row. In memory, the array's first row is places in memory, followed by the second row (Matrix[n][0] == Matrix[n]) . 
+
+```c
+/* One-Dimensional Arrays */
+int vector[5] = {1, 2, 3};
+/* In Memory
+Vector[0] 0x100
+Vector[1] 0x104
+Vector[2] 0x108
+*/
+
+/* Two-Dimensional Arrays */
+int matrix[2][3] = {{1,2,3},{4,5,6}};
+/* In Memory
+Matrix[0][0] 0x100
+Matrix[0][1] 0x104
+Matrix[0][2] 0x108
+Matrix[1][0] 0x112
+Matrix[1][1] 0x116
+Matrix[1][2] 0x120
+
+Matrix[0] -> 0x100
+Matrix[1] -> 0x112
+*/
+```
+
+### Pointer Notation and Arrays
+When an array name is used by itself, the array's address is returned.
+We can use either the array name by itself or use the address-of operator with the aray's first element. These are equivalent.
+
+```c
+/* Assumed vector -> 0x100 & pv -> 0x96 */
+int vector[5] = {1, 2, 3, 4, 5};
+int *pv = vector;
+ /*
+0x92  -> &vector[-2] | vector-2 | &pv[-2] | pv-2
+0x100 -> &vector[0]  | vector+0 | &pv[0]  | pv
+0x104 -> &vector[1]  | vector+1 | &pv[1]  | pv+1
+*/
+
+The following demonstrates the use of pointers in implementation of the scalar adition operation. This operations takes a value and multiplies it against each element of the vector:
+
+```c
+pv = vector;
+int value = 3;
+for (int i=0; i<5; i++){
+    *pv++ *= value;
+}
+```
+
+
+```
+
+### Differences Between Arrays and Pointers
 
