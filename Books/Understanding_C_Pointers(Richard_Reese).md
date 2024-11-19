@@ -1,6 +1,11 @@
 # Understanding and Using C Pointers by Richard Reese
+# Table of contents
+1. [Chapter 1: Introduction](#Chapter-1)
+2. [Chapter 3: Pointers and Functions](#Chapter-3)
+3. [Chapter 4: Pointers and Arrays](#Chapter-4)
 
-## Chapter 1: Introduction
+   
+## Chapter 1: Introduction <a name="Chapter-1"></a>
 A pointer variable contains the address in memory of another variable, object or function.
 When a C program is compiled, it works with three types of memory:
 - Static/Global: They are allocated when the program starts and remain in existence until the program terminates.
@@ -9,7 +14,7 @@ When a C program is compiled, it works with three types of memory:
 
 .......
 
-## Chapter 3: Pointers and Functions
+## Chapter 3: Pointers and Functions <a name="Chapter-3"></a>
 
 ### Program Stack and Heap
 The Stack it's an area of memory that supports the execution of functions, it's shared with the heap. Usually the stack it's on the lower part of this region.
@@ -112,7 +117,7 @@ While using the function pointers, we can:
 - Cast Function Pointer (Careful with the parameters type)
 
 
-## Chapter 4: Pointers and Arrays
+## Chapter 4: Pointers and Arrays <a name="Chapter-4"></a>
 Is a contiguous collection of homogeneous elements that can be accessed using an index.
 The elements are adjacent to one another in memory with no gaps and they are all of the same type.
 
