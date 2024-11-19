@@ -1,10 +1,17 @@
 # The Firmware Handbook by Jack Ganssle
+# Table of contents
+1. [Chapter 11: Introduction to Machine Calculations](#Chapter-11)
+2. [Chapter 12: Floating Point Aproximations](#Chapter-12)
+3. [Chapter 13: Math Function](#Chapter-13)
+4. [Chapter 15: Real-Time Kernels](#Chapter-15)
+5. [Chapter 18: Understanding Your C Compiler (How to Minimize Code Size)](#Chapter-18)
+6. [Chapter 19: Optimizing C and C++ Code](#Chapter-19)
 
-## Chapter 11: Introduction to Machine Calculations
-## Chapter 12: Floating Point Aproximations
-## Chapter 13: Math Functions
+## Chapter 11: Introduction to Machine Calculations <a name="Chapter-11"></a>
+## Chapter 12: Floating Point Aproximations <a name="Chapter-12"></a>
+## Chapter 13: Math Functions <a name="Chapter-13"></a>
 
-## Chapter 15: Real-Time Kernels
+## Chapter 15: Real-Time Kernels <a name="Chapter-15"></a>
 
 - **What is a Real-Time Kernel**: It's a software that manages the time of your uC to ensure events are processed as efficiently as possible.
 - **What is a Task**: Simple program (loop) with his own task space and his priority (how important is the task).
@@ -63,7 +70,7 @@ To ask this question you had to consider:
 There are currently close to 150 different commercial kernels to choose from. You can rate by Popularity, Reputation, Source Code, Portability, Scalability, Preemtive, #Tasks, Stack sizes, Services, Performance, Certification, Tools and Components.
 
 
-## Chapter 18: Understanding Your C Compiler (How to Minimize Code Size)
+## Chapter 18: Understanding Your C Compiler (How to Minimize Code Size) <a name="Chapter-18"></a>
 
 Sturcture of a Compiler:
 - Parser: Convertion to intermidiate language.
@@ -137,7 +144,7 @@ tmp = CONSTANT * ImportantRatio;
 ```
 - **Use Extra Hints**: Help the compiler with useful information. For example if two pointers or array arguments are unaliased.
 
-## Chapter 19: Optimizing C and C++ Code
+## Chapter 19: Optimizing C and C++ Code <a name="Chapter-19"></a>
 
 ### Adjust Structure Sizes to Power of Two
 Keeping structure sizes aligned to a power of 2 will improve performance in array indexing. Because the compiler will perform a shift operation instead of a multiplication in the indexing.
