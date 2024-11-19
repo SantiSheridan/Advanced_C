@@ -158,7 +158,6 @@ int *pv = vector;
 */
 
 The following demonstrates the use of pointers in implementation of the scalar adition operation. This operations takes a value and multiplies it against each element of the vector:
-
 ```c
 pv = vector;
 int value = 3;
@@ -167,8 +166,21 @@ for (int i=0; i<5; i++){
 }
 ```
 
+### Differences Between Arrays and Pointers
+The main difference of interest is that the pointer pv is an lvalue, which it's capable of being modified. An array name such as vector is not an lvalue and cannot be modified.
+```c
+pv = pv + 1;
+vector = vector + 1; //Syntax Error
 
+sizeof(pv) //len of pointer type -> 4 bytes
+sizeof(vector) //bytes allocated to the array -> 20 bytes
 ```
 
-### Differences Between Arrays and Pointers
+### Passing a One-Dimensional Array
+When a one-dimensional array is passed to a function, the array's address is passed by value. This means the array's size must be passed and make more efficient since we're not passing the entire array.
+
+### Using Array Notation
+
+
+
 
