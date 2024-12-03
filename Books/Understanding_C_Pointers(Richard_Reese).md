@@ -184,8 +184,9 @@ sizeof(vector) //bytes allocated to the array -> 20 bytes
 ### Passing a One-Dimensional Array
 When a one-dimensional array is passed to a function, the array's address is passed by value. This means the array's size must be passed and make more efficient since we're not passing the entire array.
 
-### Using Array Notation
 
+## Chapter 6: Pointers and Structures <a name="Chapter-6"></a>
 
+## Chapter 8: Odds and Ends  <a name="Chapter-8"></a>
 
 
